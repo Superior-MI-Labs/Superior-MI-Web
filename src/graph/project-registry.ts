@@ -1,4 +1,4 @@
-import type { SiteNodeVisibility, SiteRegistry } from "@/registry";
+import type { SiteNodeVisibility, SiteRegistry } from "../registry";
 import type {
   GraphEdgeProjection,
   GraphNodeProjection,
