@@ -1,4 +1,5 @@
 import ELK from "elkjs/lib/elk.bundled.js";
+import type { ElkNode } from "elkjs/lib/elk-api";
 import type {
   GraphNodeProjection,
   SiteGraphProjection,
@@ -47,7 +48,7 @@ export interface PositionedSiteGraph {
 export async function layoutSiteGraph(
   graph: SiteGraphProjection,
 ): Promise<PositionedSiteGraph> {
-  const elkGraph = {
+  const elkGraph: ElkNode = {
     id: "superior-mi",
     layoutOptions: LAYOUT_OPTIONS,
     children: graph.nodes.map((node) => ({
