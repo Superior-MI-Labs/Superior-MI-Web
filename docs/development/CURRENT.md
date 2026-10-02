@@ -83,8 +83,16 @@ nodes=36
 - [x] ordinary-node extension test implemented
 - [x] structural failure tests implemented
 - [x] CI workflow implemented
-- [ ] GitHub CI passes
+- [x] GitHub CI passes
 - [ ] Wave 1 merged to main
+
+## CI result
+
+GitHub Actions Web CI run 2: PASS.
+
+- registry tests: PASS;
+- TypeScript: PASS;
+- production Next.js build: PASS.
 
 ## Next gate
 
