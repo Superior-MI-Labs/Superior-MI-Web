@@ -4,12 +4,12 @@ Captured: 2026-10-01
 
 Program: Superior MI Web R0
 
-Current wave: Wave 3, graph renderer and deterministic layout.
+Current wave: Wave 4, unified activation and route-driven focus.
 
 Branch:
 
 ~~~text
-feature/graph-renderer-r0
+feature/node-activation-r0
 ~~~
 
 ## Closed gates
@@ -18,88 +18,81 @@ Wave 0 is merged.
 
 Wave 1 is merged and qualified.
 
-Wave 2 is merged and qualified by GitHub Actions:
+Wave 2 is merged and qualified.
 
-- registry and graph tests: PASS;
-- TypeScript: PASS;
-- production Next.js build: PASS.
-
-## Current objective
-
-Render the derived public graph as an interactive web surface without giving the client ownership of site structure or layout.
-
-## Wave 3 architecture
-
-~~~text
-SiteRegistry
-    |
-    v
-public visibility projection
-    |
-    v
-SiteGraphProjection
-    |
-    v
-ELK server layout
-    |
-    v
-PositionedSiteGraph
-    |
-    v
-React Flow client renderer
-~~~
-
-Only hierarchy edges constrain ELK layout.
-
-Relationship edges render as secondary connections without changing canonical sitemap geometry.
-
-## Implemented in Wave 3 branch
-
-- React Flow 12.11.6;
-- ELK 0.12.0;
-- server-computed deterministic layered layout;
-- primary/normal/secondary node dimensions;
-- hierarchy-only layout constraints;
-- relationship-edge preservation;
-- custom Superior MI graph nodes;
-- current-node visual state;
-- pan;
-- zoom;
-- fit view;
-- graph controls;
-- responsive desktop split experience;
-- responsive mobile stacked experience;
-- one shared NodeExperience for home and registry routes;
-- reduced-motion preservation from the existing visual system.
-
-## Wave 3 exit checklist
-
-- [x] React Flow dependency introduced only after Wave 2
-- [x] ELK dependency introduced only after Wave 2
-- [x] deterministic server layout implemented
-- [x] hierarchy-only layout constraints implemented
-- [x] graph renderer implemented
-- [x] custom node component implemented
-- [x] active node visual state implemented
-- [x] pan and zoom implemented
-- [x] responsive network stage implemented
-- [x] home and registry routes share one experience component
-- [x] GitHub CI passes
-- [ ] Wave 3 merged to main
-
-## CI result
-
-GitHub Actions Web CI run 9: PASS.
+Wave 3 is merged and qualified by GitHub Actions:
 
 - registry, graph projection, and ELK layout tests: PASS;
 - TypeScript: PASS;
 - production Next.js build: PASS.
 
+## Current objective
+
+Make direct URLs, normal navigation, graph nodes, search, breadcrumbs, page cards, and related-node links converge on one canonical route contract without adding a duplicate client navigation store.
+
+## Wave 4 authority
+
+~~~text
+SiteRegistry
+    |
+    +--> canonical route
+             |
+             +--> ordinary Link
+             +--> imperative router.push
+                         |
+                         v
+                    browser URL
+                         |
+                         v
+                   route resolution
+                         |
+                         v
+                  active node identity
+                         |
+                         v
+                    graph focus
+~~~
+
+The URL owns active page identity.
+
+React Flow does not.
+
+## Implemented in Wave 4 branch
+
+- keyboard-accessible graph-node activation;
+- one imperative route hook for graph and search surfaces;
+- canonical direct-route round-trip test for all public graph nodes;
+- route-driven graph focus neighborhood;
+- active parent/children/relationship context;
+- visual recession of non-context graph elements;
+- animated viewport fitting without re-layout;
+- reduced-motion-aware viewport focus;
+- public-only graph search;
+- Ctrl/Cmd+K network search shortcut;
+- registry-derived breadcrumbs;
+- existing page cards and related links remain canonical registry links;
+- deterministic layout remains unchanged while focus moves.
+
+## Wave 4 exit checklist
+
+- [x] URL established as active-node authority
+- [x] graph nodes activate canonical routes
+- [x] graph nodes are keyboard accessible
+- [x] direct route round-trip test implemented
+- [x] route-driven focus neighborhood implemented
+- [x] graph does not re-layout on focus
+- [x] network search derives from authorized graph projection
+- [x] search uses the same imperative route activation hook
+- [x] breadcrumbs derive from SiteRegistry
+- [x] reduced-motion focus behavior implemented
+- [ ] GitHub CI passes
+- [ ] Wave 4 merged to main
+
 ## Next gate
 
-Wave 4, unified node activation and route-driven focus.
+Wave 5, page rendering system and showcase content structure.
 
-Graph clicks, top navigation, breadcrumbs, search, related-node links, and direct routes must converge on one activation contract.
+Do not create one handcrafted component per page. Add reusable page types and content contracts first.
 
 ## R0 endpoint
 
