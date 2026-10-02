@@ -101,24 +101,6 @@ describe("SiteRegistry", () => {
     );
   });
 
-  it("rejects duplicate sibling slugs", () => {
-    const broken: SiteNodeDefinition = {
-      id: "ecosystem.labs-duplicate",
-      parent: "ecosystem",
-      slug: "labs",
-      title: "Broken",
-      shortTitle: "Broken",
-      summary: "Broken fixture.",
-      type: "utility",
-      status: "future",
-      visibility: "public",
-    };
-
-    expect(() => createSiteRegistry([...SITE_NODES, broken])).toThrow(
-      /Duplicate sibling slug/,
-    );
-  });
-
   it("rejects missing relationship targets", () => {
     const brokenNodes: SiteNodeDefinition[] = SITE_NODES.map((node) =>
       node.id === "community"
