@@ -4,7 +4,7 @@ import {
   SITE_NODES,
   siteRegistry,
   type SiteNodeDefinition,
-} from "@/registry";
+} from "../registry";
 import { projectRegistryToGraph } from "./project-registry";
 
 describe("projectRegistryToGraph", () => {
