@@ -78,14 +78,8 @@ export function createSiteRegistry(
       );
     }
 
-    const siblings = children.get(node.parent) ?? [];
-    if (siblings.some((sibling) => sibling.slug === node.slug)) {
-      throw new Error(
-        `Duplicate sibling slug "${node.slug}" below ${node.parent}.`,
-      );
-    }
-    siblings.push(node);
-    children.set(node.parent, siblings);
+    const existingChildren = children.get(node.parent) ?? [];
+    children.set(node.parent, [...existingChildren, node]);
   }
 
   for (const node of definitions) {
