@@ -14,7 +14,7 @@ Superior MI
 |   +-- Technologies
 |   |   |
 |   |   +-- AIR
-|   |   +-- Apps
+|   |   +-- Applications
 |   |   +-- Platform
 |   |
 |   +-- Labs
@@ -51,13 +51,29 @@ Superior MI
 |
 +-- Hub
     |
-    +-- AIR
-    +-- Apps
+    +-- Workspace
+    +-- App Library
     +-- Projects
-    +-- Developer
-    +-- Compute
+    +-- Developer Console
+    +-- Compute Console
     +-- Account
 ~~~
+
+## Canonical identity rule
+
+A product or system gets one canonical information node.
+
+AIR is canonically:
+
+~~~text
+Ecosystem
+  Technologies
+    AIR
+~~~
+
+Hub surfaces may launch, control, or relate to AIR, but they do not create a second AIR information identity.
+
+The same rule applies to Compute, Applications, Developer Platform, and other cross-cutting systems.
 
 ## Top navigation
 
@@ -66,10 +82,25 @@ R0 should expose a restrained top-level navigation rather than mirroring every n
 Initial candidate:
 
 ~~~text
-Explore | Technology | Community | Developers | About | Launch AIR | Sign In
+Explore | Technology | Community | Developers | About | AIR | Sign In
 ~~~
 
 Top-navigation entries resolve to canonical registry nodes or explicit product actions. They do not own their own duplicate page map.
+
+## Hub boundary
+
+The Hub is a future authenticated application environment.
+
+Its children represent user-facing workspaces and consoles, not duplicate public product pages.
+
+Examples:
+
+- Workspace may launch AIR or another available capability.
+- App Library may expose applications registered elsewhere.
+- Developer Console may manage future API resources.
+- Compute Console may manage future compute resources.
+
+Those surfaces can relate to canonical product nodes without becoming competing authorities.
 
 ## Maturity
 
@@ -102,12 +133,16 @@ AIR -> Labs
 AIR -> Compute
 AIR -> Developers
 AIR -> Hub
-AIR -> Apps
+AIR -> Applications
 
 Foundation -> Community
 
 Compute -> Developers
 Compute -> Manufacturing
+Compute -> Hub.Compute Console
+
+Applications -> Hub.App Library
+Platform -> Hub.Developer Console
 
 Digital Personalities -> Research
 Digital Personalities -> Experiments
