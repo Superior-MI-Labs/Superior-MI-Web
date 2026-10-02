@@ -7,6 +7,7 @@ interface NodePageProps {
 }
 
 export function NodePage({ node }: NodePageProps) {
+  const breadcrumbs = siteRegistry.getBreadcrumbs(node.id);
   const children = siteRegistry
     .getChildren(node.id)
     .filter((child) => child.visibility === "public");
@@ -27,8 +28,25 @@ export function NodePage({ node }: NodePageProps) {
 
   return (
     <main className="node-page">
+      <nav className="breadcrumbs" aria-label="Breadcrumb">
+        {breadcrumbs.map((crumb, index) => (
+          <span className="breadcrumbs__item" key={crumb.id}>
+            {index > 0 ? (
+              <span className="breadcrumbs__separator" aria-hidden="true">
+                /
+              </span>
+            ) : null}
+            {crumb.id === node.id ? (
+              <span aria-current="page">{crumb.title}</span>
+            ) : (
+              <Link href={crumb.route}>{crumb.title}</Link>
+            )}
+          </span>
+        ))}
+      </nav>
+
       <section className="node-page__hero">
-        <span className={`status status--${node.status}`}>{node.status}</span>
+        <span className={"status status--" + node.status}>{node.status}</span>
         <p className="eyebrow">{node.type}</p>
         <h1>{node.title}</h1>
         <p className="node-page__summary">{node.summary}</p>
@@ -44,7 +62,7 @@ export function NodePage({ node }: NodePageProps) {
                 href={siteRegistry.getRoute(child.id)}
                 key={child.id}
               >
-                <span className={`status status--${child.status}`}>
+                <span className={"status status--" + child.status}>
                   {child.status}
                 </span>
                 <h3>{child.title}</h3>
@@ -62,7 +80,9 @@ export function NodePage({ node }: NodePageProps) {
             {related.map(({ relationship, node: relatedNode }) => (
               <Link
                 href={siteRegistry.getRoute(relatedNode.id)}
-                key={`${node.id}:${relationship.type}:${relatedNode.id}`}
+                key={
+                  node.id + ":" + relationship.type + ":" + relatedNode.id
+                }
               >
                 <span>{relationship.type}</span>
                 <strong>{relatedNode.shortTitle}</strong>

@@ -65,6 +65,14 @@ describe("projectRegistryToGraph", () => {
     ).toBe(true);
   });
 
+  it("keeps every projected route round-trippable through the registry", () => {
+    const graph = projectRegistryToGraph(siteRegistry);
+
+    for (const node of graph.nodes) {
+      expect(siteRegistry.resolveRoute(node.route)?.id).toBe(node.id);
+    }
+  });
+
   it("keeps projection order deterministic", () => {
     const first = projectRegistryToGraph(siteRegistry);
     const second = projectRegistryToGraph(siteRegistry);
