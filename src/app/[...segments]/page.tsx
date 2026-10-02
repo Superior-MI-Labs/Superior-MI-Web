@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { NodePage } from "@/components/node-page";
+import { NodeExperience } from "@/components/node-experience";
 import { siteRegistry } from "@/registry";
 
 interface RegistryRouteProps {
@@ -45,5 +45,5 @@ export default async function RegistryRoute({ params }: RegistryRouteProps) {
     notFound();
   }
 
-  return <NodePage node={node} />;
+  return <NodeExperience node={node} />;
 }

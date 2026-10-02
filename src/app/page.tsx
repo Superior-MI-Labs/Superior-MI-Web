@@ -1,6 +1,8 @@
-import { NodePage } from "@/components/node-page";
+import { NodeExperience } from "@/components/node-experience";
 import { siteRegistry } from "@/registry";
 
 export default function HomePage() {
-  return <NodePage node={siteRegistry.requireNode(siteRegistry.rootId)} />;
+  return (
+    <NodeExperience node={siteRegistry.requireNode(siteRegistry.rootId)} />
+  );
 }
