@@ -84,8 +84,16 @@ Relationship edges render as secondary connections without changing canonical si
 - [x] pan and zoom implemented
 - [x] responsive network stage implemented
 - [x] home and registry routes share one experience component
-- [ ] GitHub CI passes
+- [x] GitHub CI passes
 - [ ] Wave 3 merged to main
+
+## CI result
+
+GitHub Actions Web CI run 9: PASS.
+
+- registry, graph projection, and ELK layout tests: PASS;
+- TypeScript: PASS;
+- production Next.js build: PASS.
 
 ## Next gate
 
