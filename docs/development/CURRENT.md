@@ -4,101 +4,73 @@ Captured: 2026-10-01
 
 Program: Superior MI Web R0
 
-Current wave: Wave 1, application skeleton.
+Current wave: Wave 2, graph projection.
 
 Branch:
 
 ~~~text
-feature/registry-routing-r0
+feature/graph-projection-r0
 ~~~
 
 ## Closed gates
 
 Wave 0 is merged.
 
-Wave 0 established:
-
-- one canonical SiteRegistry authority;
-- canonical parent hierarchy separate from typed relationships;
-- real browser routes;
-- one future node-activation path;
-- deterministic graph requirement;
-- server-side visibility projection requirement;
-- ordinary-node extension acceptance test.
-
-A follow-up correction removed duplicate AIR/product identities from the Hub subtree before implementation began.
-
-## Current objective
-
-Prove the registry and route contracts before adding any graph renderer.
-
-## Implemented in Wave 1 branch
-
-- Next.js App Router skeleton;
-- TypeScript;
-- 36-node initial SiteRegistry;
-- strict structural registry validation;
-- canonical route derivation;
-- reverse route lookup;
-- breadcrumbs derived from hierarchy;
-- public placeholder page rendering;
-- public root navigation derived from registry;
-- authenticated Hub child nodes excluded from public rendering;
-- Vitest registry tests;
-- GitHub Actions test/typecheck/build workflow.
-
-## Current stack
-
-- Next.js 16.3.8
-- React 19.3.0
-- TypeScript 7.0.2
-- Vitest 5.0.3
-
-React Flow and ELK are intentionally not dependencies yet. They belong to Wave 3 after graph projection is proven in Wave 2.
-
-## Local registry preflight
-
-A dependency-free local TypeScript preflight compiled the registry core and exercised:
-
-- AIR route derivation;
-- reverse route lookup;
-- breadcrumb derivation;
-- ordinary Energy-node extension.
-
-Result:
-
-~~~text
-REGISTRY_PREFLIGHT=PASS
-nodes=36
-~~~
-
-## Wave 1 exit checklist
-
-- [x] Next.js application skeleton committed
-- [x] SiteRegistry contract implemented
-- [x] initial registry data implemented
-- [x] route derivation implemented
-- [x] reverse route lookup implemented
-- [x] generic placeholder page renderer implemented
-- [x] ordinary-node extension test implemented
-- [x] structural failure tests implemented
-- [x] CI workflow implemented
-- [x] GitHub CI passes
-- [ ] Wave 1 merged to main
-
-## CI result
-
-GitHub Actions Web CI run 2: PASS.
+Wave 1 is merged and qualified by GitHub Actions:
 
 - registry tests: PASS;
 - TypeScript: PASS;
 - production Next.js build: PASS.
 
+## Current objective
+
+Prove that the SiteRegistry can be projected into deterministic, visibility-safe graph data without making the graph renderer an authority.
+
+## Implemented in Wave 2 branch
+
+- renderer-independent graph node projection;
+- hierarchy edge projection;
+- typed relationship edge projection;
+- public visibility projection by default;
+- optional explicit authenticated projection for future server-side use;
+- hidden relationship targets removed from public projections;
+- deterministic node and edge ordering;
+- ordinary Energy-node extension graph test.
+
+## Architecture boundary
+
+~~~text
+SiteRegistry
+    |
+    v
+projectRegistryToGraph()
+    |
+    v
+SiteGraphProjection
+    |
+    +--> future layout
+    +--> future React Flow renderer
+~~~
+
+React Flow is not imported by the graph projection layer.
+
+## Wave 2 exit checklist
+
+- [x] graph projection types implemented
+- [x] hierarchy edges derived from canonical parents
+- [x] relationship edges derived from typed registry relations
+- [x] public visibility projection implemented
+- [x] hidden relationship targets excluded
+- [x] deterministic ordering implemented
+- [x] extension node projects automatically
+- [ ] GitHub CI passes
+- [ ] Wave 2 merged to main
+
 ## Next gate
 
-Wave 2, graph projection.
+Wave 3, graph renderer and deterministic layout.
 
-Do not add React Flow until Wave 1 CI passes and the registry/routing branch is merged.
+Only after Wave 2 passes may React Flow and ELK become dependencies.
 
 ## R0 endpoint
 
