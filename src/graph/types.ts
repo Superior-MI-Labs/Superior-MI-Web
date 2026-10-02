@@ -4,7 +4,7 @@ import type {
   SiteNodeType,
   SiteNodeVisibility,
   SiteRelationshipType,
-} from "@/registry";
+} from "../registry";
 
 export interface GraphNodeProjection {
   readonly id: string;
