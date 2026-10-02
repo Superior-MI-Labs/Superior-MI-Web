@@ -63,8 +63,16 @@ React Flow is not imported by the graph projection layer.
 - [x] hidden relationship targets excluded
 - [x] deterministic ordering implemented
 - [x] extension node projects automatically
-- [ ] GitHub CI passes
+- [x] GitHub CI passes
 - [ ] Wave 2 merged to main
+
+## CI result
+
+GitHub Actions Web CI run 5: PASS.
+
+- registry and graph tests: PASS;
+- TypeScript: PASS;
+- production Next.js build: PASS.
 
 ## Next gate
 
