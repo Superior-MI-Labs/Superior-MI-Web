@@ -6,9 +6,58 @@ Private development repository for the Superior MI public website, interactive e
 
 **Superior MI Web R0**
 
-Current stage: **Wave 0, architecture freeze**
+Current checkpoint: **Wave 4 closed and qualified**
 
-The R0 endpoint is a locally runnable showcase where the Superior MI ecosystem can be explored as a deterministic interactive node graph while retaining normal web routing, direct links, browser history, accessible navigation, and reusable page rendering.
+The repository now contains a locally runnable interactive Superior MI network. The sitemap, routes, graph, search, breadcrumbs, and page identities derive from one canonical SiteRegistry.
+
+This is an intermediate showcase checkpoint. R0 still has page-system, visual-polish, content, and final fresh-clone qualification waves remaining.
+
+## Local quick start
+
+Requirements:
+
+- Node.js 20.9 or newer;
+- npm;
+- access to this private repository.
+
+Clone and launch:
+
+~~~bash
+git clone git@github.com:Superior-MI-Labs/Superior-MI-Web.git
+cd Superior-MI-Web
+npm install
+npm run dev
+~~~
+
+Then open:
+
+~~~text
+http://localhost:3000
+~~~
+
+Run the current verification suite:
+
+~~~bash
+npm run verify
+~~~
+
+That runs tests, TypeScript checking, and a production Next.js build.
+
+## Current interaction
+
+The local site already supports:
+
+- deterministic Superior MI network layout;
+- pan and zoom;
+- clickable and keyboard-accessible graph nodes;
+- route-driven focus;
+- public-node search;
+- Ctrl/Cmd+K search shortcut;
+- direct URLs;
+- browser back and forward;
+- registry-derived breadcrumbs;
+- responsive desktop and mobile presentation;
+- explicit maturity states for unfinished areas.
 
 ## Core architecture
 
@@ -18,22 +67,27 @@ SiteRegistry
     +--> routes
     +--> navigation
     +--> breadcrumbs
-    +--> search
     +--> graph projection
+    |       |
+    |       +--> ELK server layout
+    |               |
+    |               +--> React Flow client renderer
+    |
     +--> page resolution
 ~~~
 
+The browser URL owns active page identity.
+
 The graph is a visual projection of site structure. It is not a second source of truth.
 
-## R0 target stack
+## Current stack
 
 - Next.js App Router
 - React
 - TypeScript
 - React Flow
 - ELK
-
-Dependencies are introduced only when their wave requires them.
+- Vitest
 
 ## Development
 
@@ -46,6 +100,7 @@ Read in this order:
 5. docs/development/WAVES.md
 6. docs/architecture/SITE-MAP.md
 7. docs/architecture/NODE-CONTRACT.md
+8. docs/decisions/
 
 ## Design goal
 
