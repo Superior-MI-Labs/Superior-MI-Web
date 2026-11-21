@@ -1,6 +1,6 @@
 # Superior MI Web
 
-Private development repository for the Superior MI public website, interactive ecosystem explorer, future web applications, and future authenticated Hub.
+Public development repository for the Superior MI public website, interactive ecosystem explorer, future web applications, and future authenticated Hub.
 
 ## Current program
 
@@ -58,3 +58,20 @@ That visual ambition sits on a deliberately simple architecture: one structural 
 This repository is private and pre-R0.
 
 Do not interpret documented future areas such as the Hub, Manufacturing, cloud AIR access, API accounts, or other planned services as production capabilities until their owning systems establish that state.
+
+
+## Public GitHub Pages showcase
+
+The public, static showcase is published at:
+
+https://superior-mi-labs.github.io/Superior-MI-Web/
+
+The existing `.github/workflows/ci.yml` is the single verification and deployment workflow.
+Pull requests run tests, typechecks and a Pages static-export build. Successful pushes
+to `main` also upload and deploy the generated `out/` site.
+
+For a local dev server, use `npm install && npm run dev` (site at `/`).
+To reproduce the Pages build locally, use `GITHUB_PAGES=true npm run build`.
+The Pages build applies the repository base path and emits static routes for public
+registry entries. GitHub Pages cannot host the planned authenticated Hub, dynamic
+API routes, or other server-backed capabilities; those require a separate service.
